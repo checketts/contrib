@@ -73,6 +73,7 @@ func webHandler(res http.ResponseWriter, req *http.Request) {
 	data, err := json.Marshal(leader)
 	if err != nil {
 		res.WriteHeader(http.StatusInternalServerError)
+		res.Header().Set("Content-Type", "application/json")
 		res.Write([]byte(err.Error()))
 		return
 	}
